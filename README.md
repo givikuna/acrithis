@@ -1,4 +1,4 @@
-# Project Acrithis
+# Acrithis
 
 <!--
 <a href=""><img src="" alt="" width="30" height="30" /></a>
@@ -9,11 +9,9 @@ It achieves this by grounding every theorem in a trusted content-addressed store
 
 ### Technologies:
 
-<a href="https://gleam.run/"><img src="https://storage.ghost.io/c/dc/01/dc0121d6-1790-49f9-97f9-83c5d9d1790a/content/images/size/w960/2025/01/lucy.svg" alt="Gleam" width="30" height="30" /></a>
 <a href="https://rust-lang.org/"><img src="https://raw.githubusercontent.com/graydon/rust-www/gh-pages/logos/rust-logo-256x256.png" alt="Rust" width="30" height="30" /></a>
 <a href="https://lean-lang.org/"><img src="https://leodemoura.github.io/static/etaps2026/lean-logo.png" alt="Lean4" width="30" height="30" /></a>
 <a href="https://nixos.org/"><img src="https://upload.wikimedia.org/wikipedia/commons/2/28/Nix_snowflake.svg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original" alt="Nix" width="30" height="30" /></a>
-<a href="https://lustre.hexdocs.pm/"><img src="https://avatars.githubusercontent.com/u/145234907?s=200&v=4" alt="Lustre" width="30" height="30" /></a>
 
 <!--
 <a href=""><img src="" alt="" width="30" height="30" /></a>
@@ -31,6 +29,8 @@ This creates a trustable (and human-reviewed) single-source-of-truth, lessening 
 
 ### LLM Agents:
 
+Acrithis will have the optional functinality to invoke AI agents to do the proofs, with prompts and integrations to specific models built-in. However, this is not the main function of Acrithis, as it's primarily a database.
+
 Acrithis first invokes AI agents for planning how to prove a theorem in a _graph-of-thought_ like structure, this is done with the goal of going to the lowest possible layer of proofs (axioms).
 The results from these AI agents are to be checked by independent AI agents and validated.
 
@@ -39,6 +39,8 @@ Once the graph-of-thought has been determined, Acrithis will invoke another laye
 The modes'll define these in LaTeX and write their dependencies underneath.
 
 Then, Acrithis will invoke another layer of agents for placing these LaTeX axioms and theorems into `Lean4` proofs. If the axiom or theorem already exists in the `store` (explained in the last section), it'll simply point to that address.
+
+### Storing the Lean4 Proofs:
 
 Then, the resulting outputs will be compiled into an intermediate representation (IR) JSON of the following schema:
 
@@ -57,6 +59,8 @@ type AcrithisIR = ReadonlyArray<AcrithisIRNode>
 ```
 
 Acrithis'll then translate this IR into <a href="https://wiki.nixos.org/wiki/Derivations">nix derivations</a>.
+However, nix itself is not a dependency for Acrithis, as it is simply being used as a build language with a custom nix parser and evaluator that'll be built into Acrithis.
+This is done in order to eliminate dependencies.
 
 ### Validation:
 
@@ -75,7 +79,9 @@ The proofs themselves will be stored in an immutable, content-addressed format w
 #### Human-verified Chunks
 
 The database itself will be shipped by default with many axioms in many areas of mathematics, various foundational theorems, lemmas, and proofs.
-And common proof strategies such as the Pigeonhole Principle.
+And common proof strategies.
+
+These can be customized in the Web UI, more on that later.
 
 This ensures the models have a human-verified truth layer for many things that they'll need to be defining.
 Humans can add more things by hand as well, ensuring that the model only has to prove things that haven't yet been proven.
@@ -150,12 +156,6 @@ This includes but is not limited to:
 - Checking logs
 - Changing prompts
 - etc...
-
-The Web UI will be written in [lustre](https://lustre.hexdocs.pm/) to keep the code-base in majority gleam.
-
-#### Concurrency
-
-Due to the BEAM VM, gleam will use an actor model here to be able to take in input from so many models at once cleanly.
 
 #### Access/Permission Control
 
