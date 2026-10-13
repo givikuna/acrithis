@@ -9,6 +9,6 @@ version: 0.0.0.1
 identifiers:
     - description: GitHub for the project
       type: url
-      value: https://github.com/givikuna/project_acrithis
+      value: https://github.com/givikuna/acrithis
 license: GPLv3.0
-repository-code: https://github.com/givikuna/project_acrithis
+repository-code: https://github.com/givikuna/acrithis
