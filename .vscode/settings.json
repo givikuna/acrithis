@@ -1,6 +1,7 @@
 {
     "cSpell.words": [
         "Acrithis",
+        "chrono",
         "direnv",
         "fenix",
         "Givi",
@@ -13,9 +14,15 @@
         "nixfmt",
         "pkgs",
         "Ponens",
+        "serde",
         "tnix",
         "Tsvariani",
         "Untimed",
         "Warframe"
-    ]
+    ],
+
+    "rust-analyzer.server.path": "rust-analyzer",
+    "rust-analyzer.check.command": "clippy",
+    "rust-analyzer.testExplorer": true,
+    "rust-analyzer.restartServerOnConfigChange": true
 }

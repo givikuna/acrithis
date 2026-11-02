@@ -5,7 +5,7 @@ abstract: Software project creating a Lean4 proof immutable database forming a M
 authors:
     - family-names: Tsvariani
     - given-names: Givi
-version: 0.0.0.1
+version: 0.0.1
 identifiers:
     - description: GitHub for the project
       type: url

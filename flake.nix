@@ -69,6 +69,8 @@
               just
               just-formatter
               just-lsp
+
+              sqlite
             ];
 
           shellHook = ''
