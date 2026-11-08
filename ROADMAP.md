@@ -15,6 +15,7 @@ This is a document that changes a lot.
 - [x] Set up dev environment (including VSCode)
 - [x] Basic directory structure
 - [ ] Needs a way to be able to be set up declaratively
+- [ ] Needs a hashing system
 - [ ] Design a basic SQLite Wrapper
     - [ ] Uses a Nix subset language (as a DSL) for defining the Nodes (makes it easier to store proofs).
     - [ ] Enforces DAG
