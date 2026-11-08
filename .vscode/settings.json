@@ -1,8 +1,10 @@
 {
     "cSpell.words": [
         "Acrithis",
+        "Acyclicity",
         "chrono",
         "direnv",
+        "exrp",
         "fenix",
         "Givi",
         "givikuna",
@@ -16,8 +18,10 @@
         "pkgs",
         "Ponens",
         "serde",
+        "timestamptz",
         "tnix",
         "Tsvariani",
+        "tsvector",
         "Untimed",
         "Warframe"
     ],

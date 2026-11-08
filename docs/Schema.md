@@ -25,8 +25,11 @@ The types of nodes that exist:
 pub enum NodeType {
     Axiom,
     Theorem,
+    Strategy, // like induction, pigeonhole, etc...
 }
 ```
+
+(AI cannot append Axioms, for clarification)
 
 ### DependencyRole
 
@@ -76,6 +79,7 @@ pub struct Node {
     pub created_at:        DateTime<Utc>,
     pub created_by:        String,
     pub validation_status: ValidationStatus,
+    pub trust_level:       u8,
     pub size_bytes:        u64,
     pub tags:              Vec<String>, // tags aren't hashed
 }
@@ -159,7 +163,7 @@ This is the layout of that directory:
 │   ├── <aa>/                  # first two hex chars of hash
 │   │   └── <hash>/            # full 64-char hash
 │   │       ├── source.lean
-│   │       ├── doc.md
+|   |       ├── doc.tex        # LaTeX proof
 │   │       └── meta.json
 │   └── ...
 └── cache/

@@ -44,31 +44,19 @@
               lean-lsp-mcp
               elan
 
-              # gleam
-              gleam
-
-              # nodejs
-              nodejs_latest
-
-              # go
-              go
-              delve
-              golangci-lint
-              golangci-lint-langserver
-
               # nix
               nixfmt
 
               # containerization
               docker
 
-              # nu
-              nushell
-
               # build
               just
               just-formatter
               just-lsp
+
+              # scripts
+              elvish
 
               sqlite
             ];

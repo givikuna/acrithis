@@ -4,11 +4,8 @@ use serde::{Deserialize, Serialize};
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum NodeType {
     Axiom,
-    Definition,
-    Lemma,
     Theorem,
-    Corollary,
-    Conjecture,
+    Strategy,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

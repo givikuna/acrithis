@@ -42,25 +42,12 @@ Then, Acrithis will invoke another layer of agents for placing these LaTeX axiom
 
 ### Storing the Lean4 Proofs:
 
-Then, the resulting outputs will be compiled into an intermediate representation (IR) JSON of the following schema:
+Proofs that are to be inserted as nodes are going to be defined as nodes per the schemas defined in <a href="./docs/Schema.md">./docs/Schema</a>
 
-```TypeScript
-type AcrithisIRNode =
-    | {
-        existing: string; // hash for axioms and theorems already in the store
-    }
-    | {
-        id: string; // hash
-        name: string; // theorem name
-        ... // TBA
-    }
+Then they'll be compiled into a JSON file per <a href="./docs/JSON.md">./docs/JSON</a>
 
-type AcrithisIR = ReadonlyArray<AcrithisIRNode>
-```
-
-Acrithis'll then translate this IR into <a href="https://wiki.nixos.org/wiki/Derivations">nix derivations</a>.
-However, nix itself is not a dependency for Acrithis, as it is simply being used as a build language with a custom nix parser and evaluator that'll be built into Acrithis.
-This is done in order to eliminate dependencies.
+These JSON files will then be read and their data will be saved as a node in the database.
+The JSON files can be later used as a backup for whatever needs to be done.
 
 ### Validation:
 
@@ -81,17 +68,16 @@ The proofs themselves will be stored in an immutable, content-addressed format w
 The database itself will be shipped by default with many axioms in many areas of mathematics, various foundational theorems, lemmas, and proofs.
 And common proof strategies.
 
-These can be customized in the Web UI, more on that later.
-
 This ensures the models have a human-verified truth layer for many things that they'll need to be defining.
 Humans can add more things by hand as well, ensuring that the model only has to prove things that haven't yet been proven.
 
+(There will also be a WebUI that'll make it easy to read, verify, and modify these programs as a human)
+
 #### Hashing
 
-The hash will be generated using NAR-like serialization, likely relying on BLAKE3 and CID.
-This is to have a self-describing but still unique hash per object.
+The hash will be generated using BLAKE3.
 
-As recall: AI Generated LaTeX Proof -> AI Generated Lean Proof -> JSON IR -> Nix IR -> Acrithis Store Object (ASO).
+As recall: AI Generated LaTeX Proof -> AI Generated Lean Proof -> JSON IR -> Acrithis Store Object (ASO).
 
 #### Nodes and Artifacts
 
@@ -116,32 +102,25 @@ Nodes'll contain multiple fields:
 - agent_model: Maybe string
 - prompt_hash: the prompt as a hash
 - reviewer_signatures: signatures from humans that verified the proofs (the more signatures that one has, the higher its chance of being used in a proof) (this will not apply to axioms, as they are always seen as correct).
-- nix_ir: string
 - olean: path pointing to binary file for lean
 - store_path: path to the object in the store
 - size_bytes: bigint
 - full_prompt_history: string, describes all prompts, all thought processes, and the multiple AI models (outputs from all of them) on the path to creating this node.
 - tags: string (combinatorics, linear algebra, abstract algebra, category theory, etc...)
 - search_vector: tsvector, full-text search index of the name and statement
-- exrp: lean kernel-level expression
+- expr: lean kernel-level expression
 
 #### SQLite
 
 The actual database behind the store will be SQLite.
 The Merkle DAG will be mapped to this database.
-Objects'll point to the store folder (say `./acrithis/store`) that contains the proofs in a nix package like format: `./acrithis/store/a1b2c3d3/something.lean`.
+Objects'll point to the store folder (say `./acrithis/store`) that contains the proofs in a nix like format: `./acrithis/store/a1b2c3d4/meta.json` alongside the lean `./acrithis/store/a1b2c3d4/source.lean`.
+There will also be a `./acrithis/store/a1b2c3d4/doc.tex` for the LaTeX proof itself.
 
 #### Acyclicity
 
 SQLite itself does not guarantee acyclicity, but this is necessary for proofs to work, and for the hashing and IR system to not break.
 As such, Acrithis'll use an algorithm for every object added to the store. If a cycle emerges, it will not be allowed and will be flagged as an error.
-
-#### Nix Parser
-
-Acrithis'll support a simplified subset of the Nix programming language.
-It will parse the Nix code to understand how an object is to be structured in the Acrithis store. And then construct that object.
-This subset of Nix will be referred to as ANix (Acrithis Nix).
-ANix is human-writeable and readable, as it is a proper, nice-to-read IR.
 
 #### Web UI
 
@@ -166,6 +145,6 @@ The strict privilege separation'll help avoid rogue AI agents damaging aspects o
 
 ## COPYRIGHT NOTE:
 
-The name of this project is `Project Acrithis`, in reference to Acrithis from the video game, Warframe by Digital Extremes.
+The name of this project is `Acrithis`, in reference to Acrithis from the video game, Warframe by Digital Extremes.
 The copyright to this name is not mine, and I am not affiliated with Digital Extremes in any form.
 The name simply pays homage to their work and does not attempt, or want to, pertain to Digital Extremes in any form besides paying homage to the character.
