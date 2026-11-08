@@ -12,6 +12,7 @@
         "lenianiva",
         "Merkle",
         "nixfmt",
+        "olean",
         "pkgs",
         "Ponens",
         "serde",

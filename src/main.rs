@@ -1,4 +1,4 @@
-mod acrithis_lib;
+mod model;
 mod store;
 
 fn main() {
