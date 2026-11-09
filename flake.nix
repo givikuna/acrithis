@@ -3,8 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    fenix.url = "github:nix-community/fenix";
+
     flake-utils.url = "github:numtide/flake-utils";
+
+    fenix.url = "github:nix-community/fenix";
 
     lean4-nix.url = "github:lenianiva/lean4-nix";
     lean4-nix.inputs.nixpkgs.follows = "nixpkgs";

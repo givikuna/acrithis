@@ -18,3 +18,6 @@ stack:
     - name: Prettier
       version: 0.28.0
       category: Language Formatting
+    - name: VSCode
+      version: 1.144.0
+      category: Text Editor

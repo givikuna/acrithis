@@ -1,4 +1,4 @@
-mod model;
+mod shared;
 mod store;
 
 fn main() {
