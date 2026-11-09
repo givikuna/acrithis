@@ -15,12 +15,13 @@ This is a document that changes a lot.
 - [x] Set up dev environment (including VSCode)
 - [x] Basic directory structure
 - [ ] Needs a way to be able to be set up declaratively
-- [ ] Needs a hashing system
+- [x] Needs a hashing system
 - [ ] Design a basic SQLite Wrapper
     - [ ] Uses a JSON for defining the Nodes (makes it easier to store proofs).
-    - [ ] Enforces DAG
+    - [x] Enforces DAG
     - [ ] Has a proper Schema system
 - [ ] Design basic Acrithis CLI
+- [ ] Integrate all of these systems
 
 ## v0.0.2.x 🔵
 
@@ -38,11 +39,15 @@ This is a document that changes a lot.
 - [ ] Declarative setup
 - [ ] Rollback system
 
-## v0.0.4.x 🔵
+## v0.0.5.x 🔵
 
 - [ ] WebUI for easy usage
 
-## v0.0.5.x 🔵
+## v0.0.6.x 🔵
+
+- [ ] Remake declarations to use Nix instead of JSON (for lean program definitions)
+
+## v0.0.7.x 🔵
 
 - [ ] Fully Unit and Integration tested
 
