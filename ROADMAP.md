@@ -42,6 +42,10 @@ This is a document that changes a lot.
 
 - [ ] WebUI for easy usage
 
+## v0.0.5.x 🔵
+
+- [ ] Fully Unit and Integration tested
+
 ## Parking Lot ⚪
 
 - [ ] Find a way to sandbox AI agents

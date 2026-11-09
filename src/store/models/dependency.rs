@@ -9,6 +9,6 @@ pub enum DependencyRole {
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub struct Dependency {
-    pub to_hash: String,
-    pub role: DependencyRole,
+    pub to_hash : String,
+    pub role :    DependencyRole,
 }

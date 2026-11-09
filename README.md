@@ -5,7 +5,7 @@
 -->
 
 **Acrithis** (named after <a href="https://wiki.warframe.com/w/Acrithis">Acrithis herself</a>) is a formally verified theorem database for eliminating AI hallucinations in mathematical proofs.
-It achieves this by grounding every theorem in a trusted content-addressed store inspired by the <a href="https://nix.dev/manual/nix/2.24/store/">nix store</a>.
+It achieves this by grounding every axiom and theorem in a trusted content-addressed store inspired by the <a href="https://nix.dev/manual/nix/2.24/store/">nix store</a>.
 
 ### Technologies:
 

@@ -3,8 +3,8 @@
 *.conf linguist-language=INI
 
 *.md linguist-detectable=false
-*.xml linguist-detectable=false
+*.xml linguist-detectable=true
 
-*.toml linguist-detectable=false
-*.json linguist-detectable=false
-*.css linguist-detectable=false
+*.toml linguist-detectable=true
+*.json linguist-detectable=true
+*.css linguist-detectable=true
