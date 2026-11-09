@@ -1,3 +1,14 @@
+/*
+Majorly Assisted By: Google Gemini
+*/
+/*
+The API for the types was written by hand.
+AI was used to fill the rest of this in.
+*/
+/*
+Read AI_Policy.md
+*/
+
 use std::collections::{HashMap, HashSet, VecDeque};
 use std::fmt::Debug;
 
