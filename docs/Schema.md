@@ -85,6 +85,33 @@ pub struct Node {
 }
 ```
 
+### ValidationStatus
+
+```rust
+pub enum ValidationStatus {
+    Pending,
+    Passed,
+    Failed,
+    Errored,
+    Skipped,
+}
+```
+
+### TrustLevel
+
+```rust
+pub enum TrustLevel {
+    Axiom,
+    HumanVerified,
+    MachineVerified,
+    Unverified,
+}
+```
+
+AI may only append `Theorem`, `Strategy`, and `Unverified` nodes.
+The rest are to be done by humans.
+Only humans can set nodes as `HumanVerified`.
+
 ## In SQLite
 
 ```SQL
@@ -99,13 +126,17 @@ CREATE TABLE schema_meta (
 CREATE TABLE nodes (
     hash              TEXT PRIMARY KEY,
     name              TEXT NOT NULL,
-    node_type         TEXT NOT NULL CHECK (node_type IN ('axiom','theorem')),
-    lean_source_sha   TEXT NOT NULL,       -- sha256 of payload file, for integrity
-    doc_sha           TEXT NOT NULL,
+    node_type         TEXT NOT NULL
+                      CHECK (node_type IN ('axiom','theorem','strategy')),
+    lean_source_sha   TEXT NOT NULL,       -- blake3 hex of source.lean
+    doc_sha           TEXT NOT NULL,       -- blake3 hex of doc.md
     lean_version      TEXT NOT NULL,
     closure_depth     INTEGER NOT NULL CHECK (closure_depth >= 0),
     size_bytes        INTEGER NOT NULL,
     has_sorry         INTEGER NOT NULL DEFAULT 0 CHECK (has_sorry IN (0,1)),
+    trust_level       TEXT NOT NULL DEFAULT 'unverified'
+                      CHECK (trust_level IN
+                      ('axiom','human_verified','machine_verified','unverified')),
     validation_status TEXT NOT NULL
                       CHECK (validation_status IN
                       ('pending','passed','failed','errored','skipped')),
@@ -113,10 +144,10 @@ CREATE TABLE nodes (
     created_by        TEXT NOT NULL
 );
 
-CREATE INDEX idx_nodes_name        ON nodes(name);
-CREATE INDEX idx_nodes_type        ON nodes(node_type);
-CREATE INDEX idx_nodes_created_at  ON nodes(created_at DESC);
-CREATE INDEX idx_nodes_depth       ON nodes(closure_depth);
+CREATE INDEX idx_nodes_name       ON nodes(name);
+CREATE INDEX idx_nodes_type       ON nodes(node_type);
+CREATE INDEX idx_nodes_created_at ON nodes(created_at DESC);
+CREATE INDEX idx_nodes_depth      ON nodes(closure_depth);
 
 CREATE TABLE dependencies (
     from_hash TEXT NOT NULL REFERENCES nodes(hash),
@@ -139,16 +170,18 @@ CREATE TABLE tags (
 CREATE INDEX idx_tags_tag ON tags(tag);
 
 CREATE TABLE validation_log (
-    hash       TEXT NOT NULL REFERENCES nodes(hash),
+    hash         TEXT NOT NULL REFERENCES nodes(hash),
     attempted_at TEXT NOT NULL,
-    status     TEXT NOT NULL,
-    detail     TEXT NOT NULL DEFAULT ''
+    status       TEXT NOT NULL,
+    detail       TEXT NOT NULL DEFAULT ''
 );
 CREATE INDEX idx_vlog_hash ON validation_log(hash, attempted_at DESC);
 ```
 
 Append-only enforcement is on the application layer.
 No `UPDATE` or `DELETE` against `nodes`, `dependencies`, or `tags` is ever issued.
+
+This is specified in <a href="./SQLite.md">`./SQLite.md`</a>
 
 ## On-disk Layout
 
