@@ -6,6 +6,7 @@ use blake3::Hasher;
 
 use super::digest::Digest;
 use super::error::HashingError;
+
 use crate::store::models::Node;
 
 pub fn hash_bytes(bytes : &[u8]) -> Digest { blake3::hash(bytes).into() }

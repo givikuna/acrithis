@@ -1,5 +1,6 @@
-use super::error::HashingError;
 use std::fmt;
+
+use super::error::HashingError;
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct Digest(String);

@@ -1,2 +1,2 @@
-mod graph;
-mod tree;
+pub mod graph;
+pub mod tree;
