@@ -61,6 +61,8 @@
               elvish
 
               sqlite
+              sqls
+              sql-formatter
             ];
 
           shellHook = ''

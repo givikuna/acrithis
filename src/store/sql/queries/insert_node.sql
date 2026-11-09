@@ -1,0 +1,32 @@
+INSERT INTO
+    nodes (
+        hash,
+        name,
+        node_type,
+        lean_source_sha,
+        doc_sha,
+        lean_version,
+        closure_depth,
+        size_bytes,
+        has_sorry,
+        trust_level,
+        validation_status,
+        created_at,
+        created_by
+    )
+VALUES
+    (
+        ?1,
+        ?2,
+        ?3,
+        ?4,
+        ?5,
+        ?6,
+        ?7,
+        ?8,
+        ?9,
+        ?10,
+        ?11,
+        ?12,
+        ?13
+    );
