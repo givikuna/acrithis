@@ -15,3 +15,6 @@ stack:
     - name: Nix
       version: 2.34.9
       category: DevOps
+    - name: Prettier
+      version: 0.28.0
+      category: Language Formatting
