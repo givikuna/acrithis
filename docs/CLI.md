@@ -34,7 +34,7 @@ acrithis add <file.lean>
 --name <name>
 --type axiom|theorem|strategy
 --dep <hash>[:role] ...
-[--doc <file.md>]
+[--doc <doc.tex>]
 [--tag <tag>]...
 [--from-json <file.json>]
 [--insert-on-fail]
@@ -63,7 +63,7 @@ Dry-run. Computes the would-be hash without touching the store.
 Agents use this to avoid re-generating existing proofs.
 
 ```
-acrithis hash <file.lean> --name <name> --type <type> --dep <hash>[:role] ... [--doc <file.md>]
+acrithis hash <file.lean> --name <name> --type <type> --dep <hash>[:role] ... [--doc <file.tex>]
 ```
 
 Output is the 64-char hex hash on stdout, or `{ "hash": "…" }` with `--json`.
