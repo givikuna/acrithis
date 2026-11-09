@@ -11,8 +11,8 @@ impl Digest {
             return Err(HashingError::InvalidLength(hex.len()));
         }
 
-        if !hex.chars()
-               .all(|c| c.is_ascii_hexdigit() || ('a'..='f').contains(&c))
+        if !hex.bytes()
+               .all(|b : u8| b.is_ascii_digit() || (b'a'..=b'f').contains(&b))
         {
             return Err(HashingError::InvalidHex);
         }
