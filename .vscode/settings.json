@@ -17,6 +17,7 @@
         "olean",
         "pkgs",
         "Ponens",
+        "rdeps",
         "serde",
         "subproofs",
         "timestamptz",
