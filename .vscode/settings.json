@@ -22,10 +22,12 @@
         "subproofs",
         "timestamptz",
         "tnix",
+        "TOCTOU",
         "Tsvariani",
         "tsvector",
         "Untimed",
-        "Warframe"
+        "Warframe",
+        "wyrten"
     ],
 
     "rust-analyzer.server.path": "rust-analyzer",

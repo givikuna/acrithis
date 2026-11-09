@@ -35,6 +35,11 @@ This is a document that changes a lot.
 
 ## v0.0.4.x 🔵
 
+- [ ] Declarative setup
+- [ ] Rollback system
+
+## v0.0.4.x 🔵
+
 - [ ] WebUI for easy usage
 
 ## Parking Lot ⚪
