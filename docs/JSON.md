@@ -46,12 +46,8 @@ This is described in <a href="./Schema.md">./Schema.md</a>.
 }
 ```
 
-## Export Format (JSONL)
-
-TO-DO
-
 ## Determinism
 
 The canonical bytes for hashing are NOT JSON bytes.
 Key order and whitespace do not affect the hash.
-`meta.json` i written with sorted keys and LF newlines so diffs are stables.
+`meta.json` is written with sorted keys and LF newlines so diffs are stables.
