@@ -4,4 +4,4 @@
 
 - Be respectful
 - Do not use slurs or any other derogatory language
-- Remain professional
+- Remain reasonably professional (this is a school project)
