@@ -13,7 +13,7 @@ The flag-based `acrithis add` will simply be a convenient wrapper for this.
     "node_type": "axiom",
     "lean_version": "leanprover/lean4:v4.16.0",
     "lean_source": "axiom modus_ponens : ∀ {P Q : Prop}, P → (P → Q) → Q\n",
-    "doc_markdown": "# Modus Ponens\n\nIf P holds and P implies Q, then Q holds.\n",
+    "doc_tex": "[latex goes here]",
     "dependencies": [{ "to_hash": "…", "role": "uses" }],
     "tags": ["logic", "classical"]
 }
@@ -32,8 +32,8 @@ This is described in <a href="./Schema.md">./Schema.md</a>.
     "name": "modus_ponens",
     "node_type": "axiom",
     "lean_version": "leanprover/lean4:v4.16.0",
-    "lean_source": "…",
-    "doc_markdown": "…",
+    "lean_source": "...",
+    "doc_tex": "...",
     "dependencies": [],
     "closure_depth": 0,
     "size_bytes": 1234,

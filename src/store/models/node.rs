@@ -11,8 +11,8 @@ pub struct Node {
     pub name :      String,
     pub node_type : NodeType,
 
-    pub lean_source :  String,
-    pub doc_markdown : String,
+    pub lean_source : String,
+    pub doc_tex :     String,
 
     pub dependencies :  Vec<Dependency>,
     pub closure_depth : u32,

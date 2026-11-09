@@ -129,7 +129,7 @@ CREATE TABLE nodes (
     node_type         TEXT NOT NULL
                       CHECK (node_type IN ('axiom','theorem','strategy')),
     lean_source_sha   TEXT NOT NULL,       -- blake3 hex of source.lean
-    doc_sha           TEXT NOT NULL,       -- blake3 hex of doc.md
+    doc_sha           TEXT NOT NULL,       -- blake3 hex of doc.tex
     lean_version      TEXT NOT NULL,
     closure_depth     INTEGER NOT NULL CHECK (closure_depth >= 0),
     size_bytes        INTEGER NOT NULL,
