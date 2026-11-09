@@ -28,6 +28,7 @@ This is a document that changes a lot.
 - [ ] Write first human axioms (Modus Ponens, Set Theory, ...)
 - [ ] Set up a proper way for Lean programs to read from each other
 - [ ] Needs a way to format the Lean programs to always have the same string for the same program (no random whitespaces, so on)
+- [x] Proper Error System
 
 ## v0.0.3.x 🔵
 
