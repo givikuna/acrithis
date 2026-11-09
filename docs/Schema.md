@@ -189,7 +189,7 @@ The metafile `meta.json` is the project of `Node`:
     "created_by": "seed",
     "validation_status": "passed",
     "tags": ["logic", "classical"],
-    "files": { "lean": "source.lean", "doc": "doc.md" }
+    "files": { "lean": "source.lean", "doc": "doc.tex" }
 }
 ```
 

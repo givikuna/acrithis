@@ -18,6 +18,7 @@
         "pkgs",
         "Ponens",
         "serde",
+        "subproofs",
         "timestamptz",
         "tnix",
         "Tsvariani",
